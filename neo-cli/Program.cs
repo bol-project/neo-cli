@@ -7,7 +7,7 @@ namespace Neo
 {
     static class Program
     {
-        internal static Wallet Wallet;
+          internal static Wallet Wallet;
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
@@ -21,11 +21,7 @@ namespace Neo
         static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-			var bufferSize = 1024 * 67 + 128;
-			Stream inputStream = Console.OpenStandardInput(bufferSize);
-			Console.SetIn(new StreamReader(inputStream, Console.InputEncoding, false, bufferSize));
-			var mainService = new MainService();
-			mainService.Run(args);
+            new MainService().Run(args);
         }
 
         private static void PrintErrorLogs(StreamWriter writer, Exception ex)
